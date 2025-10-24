@@ -33,6 +33,19 @@
   margin-bottom: 110px;
 }
 
+button {
+  background-color: #515076;
+  border-radius: 30px;
+  border: none;
+  max-width: 210px;
+  padding: 10px;
+  color: #F7F7FA;
+}
+
+.silver-color-for-button {
+  background-color: #C0C0C0;
+}
+
 .content-container {
   width: 1110px;
   height: 1191px;
