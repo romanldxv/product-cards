@@ -56,8 +56,8 @@ title.addEventListener('mouseover', () => {
 
 // Перекрашивание кнопки с одного цвета на другой
 
-const changeButtonColorBtn = document.querySelector('#change-button-color-btn');
+const changeColorBtn = document.querySelector('#change-color-btn');
 
-changeButtonColorBtn.addEventListener('click', () => {
-  changeButtonColorBtn.classList.toggle('silver-color-for-button');
+changeColorBtn.addEventListener('click', () => {
+  changeColorBtn.classList.toggle('bg-silver');
 })

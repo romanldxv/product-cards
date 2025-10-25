@@ -33,7 +33,7 @@
   margin-bottom: 110px;
 }
 
-button {
+.button {
   background-color: #515076;
   border-radius: 30px;
   border: none;
@@ -42,7 +42,7 @@ button {
   color: #F7F7FA;
 }
 
-.silver-color-for-button {
+.bg-silver {
   background-color: #C0C0C0;
 }
 
