@@ -25,7 +25,7 @@ checkSpeed(200);
 const productName = "Хлеб";
 const productPrice = 2;
 
-function buyItem(budget) {
+function buyProduct(budget) {
   if (productPrice < budget) {
     console.log(`${productName} приобретён. Спасибо за покупку!`);
   } else {
