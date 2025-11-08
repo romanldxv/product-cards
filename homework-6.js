@@ -29,7 +29,7 @@ console.log(car);
 // 5) Создание функции, которая принимает объект и проверяет наличие свойства "максимальная скарость". Если его нет - добавляет
 
 function checkMaxSpeed(car) {
-  if (car.maxSpeed === undefined) {
+  if (car.maxSpeed) {
     car.maxSpeed = 220;
   }
 }
@@ -52,7 +52,7 @@ console.log(products);
 
 // 8) Создание массива объектов. После добавить новый объект в конец списка
 
-let languages = [
+let machineLanguages = [
   {
     name: "JavaScript",
     year: 1995,
@@ -76,7 +76,7 @@ let languages = [
   }
 ];
 
-languages.push(
+machineLanguages.push(
   {
     name: "PHP",
     year: 1995,
@@ -86,11 +86,11 @@ languages.push(
   }
 );
 
-console.log(languages);
+console.log(machineLanguages);
 
 // 9) Создание массива из объектов одной вселенной. Объединить оба массива
 
-const cFamily = [
+const cFamilyLanguages = [
   {
     name: "C++",
     year: 1983,
@@ -107,14 +107,14 @@ const cFamily = [
   }  
 ];
 
-languages = [...languages, ...cFamily];
+machineLanguages = [...machineLanguages, ...cFamilyLanguages];
 
-console.log(languages);
+console.log(machineLanguages);
 
 // 10) Применить метод forEach с добавлением нового свойства по условию
 
-languages.forEach(language => {
-  (language.year < 2000) ? language.isOld = true : language.isOld = false;
+machineLanguages.forEach(language => {
+  language.isOld = language.year < 2000;
 })
 
-console.log(languages);
+console.log(machineLanguages);
