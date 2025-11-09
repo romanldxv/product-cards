@@ -33,7 +33,7 @@ function buyProduct(budget) {
   }
 }
 
-buyItem(1);
+buyProduct(1);
 
 // 6) Создание функции и её именование
 
