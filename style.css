@@ -42,6 +42,16 @@
   color: #F7F7FA;
 }
 
+.button-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 45px;
+  position: relative;
+  list-style: none;
+  margin: auto;
+}
+
 .bg-silver {
   background-color: #C0C0C0;
 }
