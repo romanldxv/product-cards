@@ -38,7 +38,7 @@ function showProductCards() {
     alert("Пожалуйста, введите число!");
 
   else if (cardQuantity >= 1 && cardQuantity <= 5) {
-    productCards.filter((card, index) => {
+    productCards.map((card, index) => {
       if (index < cardQuantity) {
         const cardClone = productCardTemplate.content.cloneNode(true);
 
