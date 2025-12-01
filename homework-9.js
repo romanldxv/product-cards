@@ -9,6 +9,7 @@ emailForm.addEventListener("submit", event => {
   const data = Object.fromEntries(formData.entries());
   console.log(data);
 })
+
 // 5. Логика формы регистрации + сохранение объекта данных с регистрации
 
 const registrationForm = document.querySelector("#registration-form");
@@ -53,7 +54,7 @@ closeModalWindowBtn.addEventListener("click", () => closeModalWindow());
 // 9. Проверка введённых данных + создание currentUser
 
 const authenticationForm = document.querySelector("#authentication-form");
-let currentUser = {};
+let currentUser;
 
 authenticationForm.addEventListener("submit", event => {
   event.preventDefault();
@@ -61,8 +62,7 @@ authenticationForm.addEventListener("submit", event => {
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
 
-  if (data.userLogin === registrationFormData.userLogin
-     && data.userPassword === registrationFormData.userPassword) {
+  if (data.userLogin === registrationFormData.userLogin && data.userPassword === registrationFormData.userPassword) {
     closeModalWindow();
     currentUser = { ...registrationFormData, lastLogin: new Date() }
     console.log(currentUser);

@@ -272,6 +272,13 @@
   margin: 10px auto;
 }
 
+.form-container {
+  margin-top: 200px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .auth-btn {
   background: #92a354;
   color: #FFFFFF;
