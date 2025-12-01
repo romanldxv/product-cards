@@ -35,12 +35,71 @@
           </div>
         </li>
       </template>
+      <form class="form" id="registration-form">
+        <label for="userName">Имя:</label>
+        <input placeholder="Введи имя..." type="text" name="userName" required>
+        <label for="userSurname">Фамилия:</label>
+        <input placeholder="Введи фамилию..." type="text" name="userSurname" required>
+        <label for="userDateOfBirth">Дата рождения:</label>
+        <input type="date" name="userDateOfBirth" required>
+        <label for="userLogin">Логин:</label>
+        <input placeholder="Введи логин..." type="text" name="userLogin" required>
+        <label for="userPassword">Пароль:</label>
+        <input placeholder="Введи пароль..." type="password" name="userPassword" required>
+        <label for="userPasswordConfirmation">Повторите пароль:</label>
+        <input placeholder="Повтори пароль..." type="password" name="userPasswordConfirmation" required>
+        <button class="form-submit-btn" type="submit">Регистрация</button>
+      </form>
+      <button class="auth-btn">Аутентификация</button>
     </ul>
   </div>
+  <div class="modal">
+    <p>Аутентификация</p>
+    <button class="close-btn" id="close-modal-btn">X</button>
+    <form class="form" id="authentication-form">
+      <label for="userLogin">Логин:</label>
+      <input placeholder="Введи логин..." type="text" name="userLogin" required>
+      <label for="userPassword">Пароль:</label>
+      <input placeholder="Введи пароль..." type="password" name="userPassword" required>
+      <button class="form-submit-btn" type="submit">Войти</button>
+    </form>
+  </div>
+  <footer class="footer">
+    <div class="footer-content-container">
+      <div class="contacts">
+        <p class="title-name">Product Cards</p>
+        <p class="title-name-description">У нас самые лучшие продукты для кожи!</p>
+        <div class="contacts-images">
+          <img src="img/ic-telegram.svg">
+          <img src="img/ic-vk.svg">
+        </div>
+      </div>
+      <div>
+        <p class="subscription-text">Подпишись на наши акции:</p>
+        <form class="form-subscription" id="email-form">
+          <input placeholder="Введи Email..." name="email" type="email" required>
+          <button type="submit">Подписаться</button>
+        </form>
+        <p class="copyright-text">www.product-cards.com&copy;all right reserve</p>
+      </div>
+      <div class="links-container">
+        <p>Быстрые ссылки</p>
+        <nav>
+          <ul class="links-list">
+            <a href="#">Главная</a>
+            <a href="#">Магазин</a>
+            <a href="#">Контакты</a>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </footer>
+  <div class="overlay"></div>
   <script src="main.js"></script>
   <script src="homework-5.js"></script>
   <script src="homework-6.js"></script>
   <script src="homework-7.js" type="module"></script>
   <script src="homework-8.js" type="module"></script>
+   <script src="homework-9.js"></script>
 </body>
 </html>
