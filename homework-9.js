@@ -1,72 +1,61 @@
+import { Modal } from "./Modal.js";
+import { Form } from "./Form.js";
+
 // 4. Логика формы в футере
 
-const emailForm = document.querySelector("#email-form");
+const emailForm = new Form("email-form");
 
-emailForm.addEventListener("submit", event => {
+emailForm.form.addEventListener("submit", event => {
   event.preventDefault();
-  const form = event.target;
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
-  console.log(data);
+  console.log(emailForm.getData());
+  emailForm.reset();
 })
 
 // 5. Логика формы регистрации + сохранение объекта данных с регистрации
 
-const registrationForm = document.querySelector("#registration-form");
+const registrationForm = new Form("registration-form");
 
 let registrationFormData;
 
-registrationForm.addEventListener("submit", event => {
+registrationForm.form.addEventListener("submit", event => {
   event.preventDefault();
-  const form = event.target;
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
+  const data = registrationForm.getData();
 
-  if (data.userPassword === data.userPasswordConfirmation) {
+  if (data.userPassword === data.userPasswordConfirmation && registrationForm.isValid()) {
     registrationFormData = { ...data, createdOn: new Date() };
     console.log(registrationFormData);
+    registrationForm.reset();
   }
   else
     alert("Регистрация отклонена. Пароли не совпадают!");
 })
 
-// 8. Управление модальным окном
+// 8. Управление модальным окном -- через класс Modal
 
-const modalWindow = document.querySelector(".modal");
 const openModalWindowBtn = document.querySelector(".auth-btn");
 const closeModalWindowBtn = document.querySelector("#close-modal-btn");
-const overlay = document.querySelector(".overlay");
 
-function openModalWindow() {
-  overlay.style.display = "block";
-  modalWindow.classList.add("modal-showed");
-}
+const modalAuth = new Modal("modal-auth");
 
-function closeModalWindow() {
-  overlay.style.display = "none";
-  modalWindow.classList.remove("modal-showed");
-}
+openModalWindowBtn.addEventListener("click", () => modalAuth.open());
 
-openModalWindowBtn.addEventListener("click", () => openModalWindow());
-
-closeModalWindowBtn.addEventListener("click", () => closeModalWindow());
+closeModalWindowBtn.addEventListener("click", () => modalAuth.close());
 
 // 9. Проверка введённых данных + создание currentUser
 
-const authenticationForm = document.querySelector("#authentication-form");
+const authenticationForm = new Form("authentication-form");
 let currentUser;
 
-authenticationForm.addEventListener("submit", event => {
+authenticationForm.form.addEventListener("submit", event => {
   event.preventDefault();
-  const form = event.target;
-  const formData = new FormData(form);
-  const data = Object.fromEntries(formData.entries());
+  const data = authenticationForm.getData();
 
-  if (data.userLogin === registrationFormData.userLogin && data.userPassword === registrationFormData.userPassword) {
-    closeModalWindow();
+  if (data.userLogin === registrationFormData.userLogin && data.userPassword === registrationFormData.userPassword && authenticationForm.isValid()) {
+    modalAuth.close();
     currentUser = { ...registrationFormData, lastLogin: new Date() }
     console.log(currentUser);
     alert("Вы успешно авторизировались!");
+    authenticationForm.reset();
   } else
     alert("Неверный логин или пароль!");
 })
