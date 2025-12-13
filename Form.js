@@ -9,8 +9,10 @@ export class Form {
 
     if (this.isValid())
       return data;
-    else
-      alert("Введите корректные данные!")
+    else {
+      alert("Введите корректные данные!");
+      return data;
+    }
   }
 
   isValid() {

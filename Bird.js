@@ -1,13 +1,13 @@
 import { Animal } from "./Animal.js";
 
 export class Bird extends Animal {
-  constructor(name, age, isCanFly) {
+  constructor(name, age, canFly) {
     super(name, age);
-    this.isCanFly = isCanFly;
+    this.canFly = canFly;
   }
 
   fly() {
-    if (this.isCanFly)
+    if (this.canFly)
       console.log(`${this.name} полетел!`);
     else
       console.log(`${this.name} не умеет летать!`);
@@ -19,6 +19,6 @@ export class Bird extends Animal {
 
   printInfo() {
     super.printInfo();
-    console.log(`Умеет летать: ${this.isCanFly}`);
+    console.log(`Умеет летать: ${this.canFly}`);
   }
 }

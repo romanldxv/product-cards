@@ -1,11 +1,11 @@
+import "./homework-5.js";
+import "./homework-6.js";
+import "./homework-7.js";
+import "./homework-8.js";
+import "./homework-9.js";
+
 import { Dog } from "./Dog.js"
 import { Bird } from "./Bird.js"
-
-const homework5 = await import("./homework-5.js");
-const homework6 = await import("./homework-6.js");
-const homework7 = await import("./homework-7.js");
-const homework8 = await import("./homework-8.js");
-const homework9 = await import("./homework-9.js");
 
 // ЗАДАНИЕ 5
 // Покраска первой карточки
