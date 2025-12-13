@@ -324,6 +324,10 @@
   display: none;
 }
 
+.overlay-showed {
+  display: block;
+}
+
 .close-btn {
   font-size: 20px;
   font-weight: 700;

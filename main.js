@@ -1,8 +1,11 @@
-import * as homework5 from "./homework-5.js"
-import * as homework6 from "./homework-6.js"
-import * as homework7 from "./homework-7.js"
-import * as homework8 from "./homework-8.js"
-import * as homework9 from "./homework-9.js"
+import { Dog } from "./Dog.js"
+import { Bird } from "./Bird.js"
+
+const homework5 = await import("./homework-5.js");
+const homework6 = await import("./homework-6.js");
+const homework7 = await import("./homework-7.js");
+const homework8 = await import("./homework-8.js");
+const homework9 = await import("./homework-9.js");
 
 // ЗАДАНИЕ 5
 // Покраска первой карточки
@@ -72,60 +75,6 @@ changeColorBtn.addEventListener('click', () => {
 
 // ЗАДАНИЕ 10
 // 3. Создание структуры
-
-class Animal {
-  constructor(name, age) {
-    this.name = name;
-    this.age = age;
-  }
-
-  makeSound() {
-    console.log("Животное издаёт звук");
-  }
-
-  printInfo() {
-    console.log(`Имя: ${this.name} возраст: ${this.age}`);
-  }
-}
-
-class Dog extends Animal {
-  constructor(name, age, owner) {
-    super(name, age);
-    this.owner = owner;
-  }
-
-  makeSound() {
-    console.log(`Собака ${this.name} говорит: "Гав!"`);
-  }
-  
-  printInfo() {
-    super.printInfo();
-    console.log(`Хозяин: ${this.owner}`);
-  }
-}
-
-class Bird extends Animal {
-  constructor(name, age, isCanFly) {
-    super(name, age);
-    this.isCanFly = isCanFly;
-  }
-
-  fly() {
-    if (this.isCanFly)
-      console.log(`${this.name} полетел!`);
-    else
-      console.log(`${this.name} не умеет летать!`);
-  }
-
-  makeSound() {
-    console.log(`${this.name} говорит: "Чирик!"`);
-  }
-
-  printInfo() {
-    super.printInfo();
-    console.log(`Умеет летать: ${this.isCanFly}`);
-  }
-}
 
 const dog = new Dog("Чарли", 5, "Евгений");
 dog.makeSound();

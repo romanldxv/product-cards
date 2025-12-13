@@ -1,18 +1,16 @@
 export class Modal {
   constructor(id) {
-    this.id = id;
-
     this.modalWindow = document.getElementById(id);
     this.overlay = document.querySelector(".overlay");
   }
 
   open() {
-    this.overlay.style.display = "block";
+    this.overlay.classList.add("overlay-showed");
     this.modalWindow.classList.add("modal-showed");
   }
 
   close() {
-    this.overlay.style.display = "none";
+    this.overlay.classList.remove("overlay-showed");
     this.modalWindow.classList.remove("modal-showed");
   }
 
