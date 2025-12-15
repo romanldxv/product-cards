@@ -1,3 +1,13 @@
+import "./homework-5.js";
+import "./homework-6.js";
+import "./homework-7.js";
+import "./homework-8.js";
+import "./homework-9.js";
+
+import { Dog } from "./Dog.js"
+import { Bird } from "./Bird.js"
+
+// ЗАДАНИЕ 5
 // Покраска первой карточки
 
 const blueColorHash = '#00BFFF';
@@ -61,3 +71,16 @@ const changeColorBtn = document.querySelector('#change-color-btn');
 changeColorBtn.addEventListener('click', () => {
   changeColorBtn.classList.toggle('bg-silver');
 })
+
+
+// ЗАДАНИЕ 10
+// 3. Создание структуры
+
+const dog = new Dog("Чарли", 5, "Евгений");
+dog.makeSound();
+dog.printInfo();
+
+const parrot = new Bird("Оливер", 2, true);2
+parrot.fly();
+parrot.makeSound();
+parrot.printInfo();
