@@ -10,7 +10,7 @@ export class Cafe {
 
   orderDrink(drink) {
     console.log(`Вы заказали напиток: ${drink.name}`);
-    console.log(drink.getInfo())
-    drink.serveDrink()
+    console.log(drink.getInfo());
+    drink.serveDrink();
   }
 }
