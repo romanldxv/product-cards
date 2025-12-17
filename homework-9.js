@@ -1,5 +1,5 @@
-import { Modal } from "./Modal.js";
-import { Form } from "./Form.js";
+import { Modal } from "./homework-10/Modal.js";
+import { Form } from "./homework-10/Form.js";
 
 // 4. Логика формы в футере
 
