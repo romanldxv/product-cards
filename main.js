@@ -4,8 +4,14 @@ import "./homework-7.js";
 import "./homework-8.js";
 import "./homework-9.js";
 
-import { Dog } from "./Dog.js"
-import { Bird } from "./Bird.js"
+import { Dog } from "./homework-10/Dog.js"
+import { Bird } from "./homework-10/Bird.js"
+
+import { Coffee } from "./homework-11/Coffee.js"
+import { Tea } from "./homework-11/Tea.js";
+import { Lemonade } from "./homework-11/Lemonade.js";
+import { Cafe } from "./homework-11/Cafe.js";
+
 
 // ЗАДАНИЕ 5
 // Покраска первой карточки
@@ -84,3 +90,16 @@ const parrot = new Bird("Оливер", 2, true);2
 parrot.fly();
 parrot.makeSound();
 parrot.printInfo();
+
+
+// ЗАДАНИЕ 11
+
+const cafeLite = new Cafe("Cafe Lite", "Россия, Челябинская область, г.Челябинск, Блюхера 1А");
+const duchess = new Lemonade("Дюшес", 500, 60, 10, true);
+const blackTea = new Tea("Чёрный чай", 200, 40, 50, "Чёрный", "Гранулированный", "Растительное");
+const cappuccino = new Coffee("Капучино", 300, 100, 50, "Арабика", "Растительное");
+
+console.log(cafeLite.getInfo());
+cafeLite.orderDrink(duchess);
+cafeLite.orderDrink(blackTea);
+cafeLite.orderDrink(cappuccino);
