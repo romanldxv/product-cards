@@ -15,6 +15,9 @@ export class Modal {
   close() {
     this.modal.classList.remove('modal-showed');
     this.overlay.classList.remove('overlay-showed');
+
+    this.modal.removeEventListener('click', this.#callbackClose);
+    this.overlay.removeEventListener('click', this.#callbackClose);Э
   }
 
   isOpen() {
@@ -31,17 +34,14 @@ export class Modal {
   #initClose() {
     const closeButton = this.modal.querySelector('#modal-close-button')
 
-    closeButton.addEventListener('click', () => {
-      this.close();
-    })
+    closeButton.addEventListener('click', this.#callbackClose)
 
     if (this.shouldCloseOnOverlay) {
-      this.overlay.addEventListener('click', this.#callbackCloseOnOverlay);
+      this.overlay.addEventListener('click', this.#callbackClose);
     }
   }
 
-  #callbackCloseOnOverlay = () => {
-    this.close()
-    this.overlay.removeEventListener('click', this.#callbackCloseOnOverlay)
+  #callbackClose = () => {
+    this.close();
   }
 }
