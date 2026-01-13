@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Users</title>
+</head>
+<body>
+  <div class="content-container">
+    <p class="loading-text">Загружаем данные...</p>
+    <p class="loading-error-text">Ошибка при загрузке данных!</p>
+    <ul class="control-btn-list">
+      <li class="control-btn-list-item">
+        <button class="control-btn" id="delete-all-user-cards-btn">Удалить все карточки</button>
+      </li>
+      <li class="control-btn-list-item">
+        <button class="control-btn" id="delete-user-card-btn">Удалить определенную карточку</button>
+      </li>
+      <li class="control-btn-list-item">
+        <button class="control-btn" id="get-all-user-cards-btn">Получить все карточки</button>
+      </li>
+    </ul>
+    <ul class="user-card-list">
+      <template id="user-card-template">
+        <li class="user-card-list-item">
+          <div class="user-card">
+            <img src="../img/empty.png" 
+                 alt="Нет фотографии"
+                 class="user-card-photo">
+            <p class="user-card-text" id="user-card-id">id</p>
+            <p class="user-card-text" id="user-card-fullname">имя фамилия</p>
+            <p class="user-card-text" id="user-card-email">email</p>
+            <p class="user-card-text" id="user-card-age">age</p>
+          </div>
+        </li>
+      </template>
+    </ul>
+  </div>
+  <script src="./async.js"></script>
+</body>
+</html>
