@@ -24,17 +24,12 @@
 }
 
 .control-btn {
-  display: none;
   border: 0;
   border-radius: 25px;
   width: 230px;
   height: 80px;
   background-color: bisque;
   cursor: pointer;
-}
-
-.control-btn-showed {
-  display: block;
 }
 
 .user-card-list {
@@ -50,6 +45,7 @@
 }
 
 .loading-text {
+  display: none;
   font-size: 24px;
   position: absolute;
   top: 50%;
@@ -57,8 +53,8 @@
   transform: translate(-50%, -50%);
 }
 
-.loading-text-hidden {
-  display: none;
+.loading-text-showed {
+  display: block;
 }
 
 .loading-error-text {

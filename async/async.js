@@ -1,9 +1,10 @@
 let allUserCardLength;
+changeVisibilityHTMLText('loading-text', true);
 
-async function getUsers() {
+async function loadUsers() {
   try {
     if (localStorage.getItem('users') === null) {
-      changeVisibilityLoadingText(true);
+      changeVisibilityHTMLText('loading-text', true);
 
       await new Promise(resolve => setTimeout(resolve, 1000));
 
@@ -15,39 +16,39 @@ async function getUsers() {
       localStorage.setItem('allUserCardLength', JSON.stringify(allUserCardLength));
     }
   } catch (error) {
-    console.log(`Ошибка при загрузке: ${error}`);
+    console.log(`Ошибка при загрузке: ${ error }`);
 
-    changeVisibilityLoadingText(false);
-    changeVisibilityLoadingErrorText(true);
+    changeVisibilityHTMLText('loading-text', false);
+    changeVisibilityHTMLText('loading-error-text', true);
   }
 }
 
 setTimeout(() => {
-    getUsers().then(() => {
-      showUserCards();
+    loadUsers().then(() => {
+      renderCards(JSON.parse(localStorage.getItem('users')));
       showControlButtons();
     })
 }, 1000)
 
 
-function showUserCards() {
-  changeVisibilityLoadingText(false);
+function renderCards(cards) {
+  changeVisibilityHTMLText('loading-text', false);
+  
+  const userCardListItems = document.querySelectorAll('.user-card-list li');
+  userCardListItems.forEach(listItem => listItem.remove());
 
-  const userCardTemplate = document.getElementById('user-card-template');
-  const userCardList = document.querySelector('.user-card-list');
+  if (cards.length > 0) {
+    const userCardTemplate = document.getElementById('user-card-template');
+    const userCardList = document.querySelector('.user-card-list');
 
-  const userCards = JSON.parse(localStorage.getItem('users'));
-
-  if (userCards) {
-    userCards.forEach(card => {
+    cards.forEach(card => {
       const cardClone = userCardTemplate.content.cloneNode(true);
 
-      cardClone.querySelector('.user-card-photo').src = `../img/${card.imageName}.png`;
-
-      cardClone.querySelector('#user-card-id').textContent = `id: ${card.id}`;
-      cardClone.querySelector('#user-card-fullname').textContent = `${card.name} ${card.surname}`;
+      cardClone.querySelector('.user-card-photo').src = `../img/${ card.imageName }.png`;
+      cardClone.querySelector('#user-card-id').textContent = `id: ${ card.id }`;
+      cardClone.querySelector('#user-card-fullname').textContent = `${ card.name } ${ card.surname }`;
       cardClone.querySelector('#user-card-email').textContent = card.email;
-      cardClone.querySelector('#user-card-age').textContent = `${card.age} лет`;
+      cardClone.querySelector('#user-card-age').textContent = `${ card.age } лет`;
 
       userCardList.appendChild(cardClone);
     });
@@ -59,91 +60,79 @@ function showControlButtons() {
   const deleteUserCardButton = document.getElementById('delete-user-card-btn');
   const getAllUserCardsButton = document.getElementById('get-all-user-cards-btn');
 
-  deleteAllUserCardsButton.classList.add('control-btn-showed');
-  deleteUserCardButton.classList.add('control-btn-showed');
-  getAllUserCardsButton.classList.add('control-btn-showed');
-
-  let currentUserCards;
-  let newUserCards;
-
   deleteAllUserCardsButton.addEventListener('click', () => {
-    if (localStorage.getItem('users') === null) {
-      alert("Вы уже удалили всех пользователей!");
-      return;
-    }
-    localStorage.removeItem('users');
-    
-    removeAllUserCards();
-    showUserCards();
+    handleDeleteAllUserCards();
   })
 
   deleteUserCardButton.addEventListener('click', () => {
-    currentUserCards = JSON.parse(localStorage.getItem('users'));
-
-    if (localStorage.getItem('users') === null || JSON.parse(localStorage.getItem('users')).length === 0) {
-      alert('Здесь нет ни одного пользователя!');
-      return;
-    }
-    idUserCardForRemove = prompt("Введите ID пользователя для удаления");
-
-    if (idUserCardForRemove > 0 && idUserCardForRemove <= allUserCardLength) {
-      
-      newUserCards = currentUserCards.filter(userCard => userCard.id != idUserCardForRemove);
-
-      localStorage.setItem('users', JSON.stringify(newUserCards));
-
-      removeAllUserCards();
-      showUserCards();
-    } else {
-      alert('Введите корректный ID пользователя!')
-    }
+    handleDeleteUserCard();
   })
 
   getAllUserCardsButton.addEventListener('click', () => {
-    if (localStorage.getItem('users')) {
-      getUsers().then(() => {
-        currentUserCards = JSON.parse(localStorage.getItem('users'));
-        allUserCardLength = JSON.parse(localStorage.getItem('allUserCardLength'));
-
-        if (currentUserCards.length === allUserCardLength) {
-          alert("У вас и так отображены все пользователи!");
-          return;
-        }
-
-        renderUsers();
-      });
-      return;
-    }
-    renderUsers();
+    handleGetAllUserCards();
   })
 }
 
-function changeVisibilityLoadingText(shouldVisible) {
-  const loadingText = document.querySelector('.loading-text');
+function handleDeleteAllUserCards() {
+  if (localStorage.getItem('users') === null) {
+    alert("Вы уже удалили всех пользователей!");
+    return;
+  }
 
-  shouldVisible ? loadingText.classList.remove('loading-text-hidden') : loadingText.classList.add('loading-text-hidden');
+  clearAllUserCards();
 }
 
-function changeVisibilityLoadingErrorText(shouldVisible) {
-  const loadingErrorText = document.querySelector('.loading-error-text')
+function handleDeleteUserCard() {
+  const currentUserCards = JSON.parse(localStorage.getItem('users'));
 
-  shouldVisible ? loadingErrorText.classList.add('loading-error-text-showed') : loadingErrorText.classList.remove('loading-error-text-showed');
+  if (currentUserCards === null || currentUserCards.length === 0) {
+    alert('Здесь нет ни одного пользователя!');
+    return;
+  }
+  const idUserCardForRemove = prompt("Введите ID пользователя для удаления");
+  allUserCardLength = JSON.parse(localStorage.getItem('allUserCardLength'));
+
+  if (idUserCardForRemove > 0 && idUserCardForRemove <= allUserCardLength) {
+    const newUserCards = currentUserCards.filter(userCard => userCard.id != idUserCardForRemove);
+
+    localStorage.setItem('users', JSON.stringify(newUserCards));
+    renderCards(newUserCards);
+  } else {
+    alert('Введите корректный ID пользователя!');
+  }
 }
 
-function removeAllUserCards() {
-  const userCardListItems = document.querySelectorAll('.user-card-list li');
+function handleGetAllUserCards() {
+  const currentUserCards = JSON.parse(localStorage.getItem('users'));
 
-  userCardListItems.forEach(listItem => {
-    console.log(listItem);
-    listItem.remove();
+  if (currentUserCards === null) {
+    localStorage.removeItem('users');
+    loadUsers().then(() => {
+      renderCards(JSON.parse(localStorage.getItem('users')));
+    })
+    return;
+  }
+
+  allUserCardLength = JSON.parse(localStorage.getItem('allUserCardLength'));
+
+  if (currentUserCards.length === allUserCardLength) {
+    alert("У вас и так отображены все пользователи!");
+    return;
+  }
+
+  clearAllUserCards();
+  loadUsers().then(() => {
+    renderCards(JSON.parse(localStorage.getItem('users')));
   })
 }
 
-function renderUsers() {
-  localStorage.removeItem('users')
-  removeAllUserCards();
+function changeVisibilityHTMLText(textSelector, shouldVisible) {
+  const text = document.querySelector(`.${ textSelector }`);
 
-  getUsers().then(() => {
-    showUserCards();
-  })
+  shouldVisible ? text.classList.add(`${ textSelector }-showed`) : text.classList.remove(`${ textSelector }-showed`);
+}
+
+function clearAllUserCards() {
+  localStorage.removeItem('users');
+  renderCards([]);
 }
