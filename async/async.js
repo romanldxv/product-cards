@@ -26,7 +26,16 @@ async function loadUsers() {
 setTimeout(() => {
     loadUsers().then(() => {
       renderCards(JSON.parse(localStorage.getItem('users')));
-      showControlButtons();
+      const deleteAllUserCardsButton = document.getElementById('delete-all-user-cards-btn');
+      const getAllUserCardsButton = document.getElementById('get-all-user-cards-btn');
+
+      deleteAllUserCardsButton.addEventListener('click', () => {
+        handleDeleteAllUserCards();
+      })
+
+      getAllUserCardsButton.addEventListener('click', () => {
+        handleGetAllUserCards();
+      })
     })
 }, 1000)
 
@@ -50,31 +59,20 @@ function renderCards(cards) {
       cardClone.querySelector('#user-card-email').textContent = card.email;
       cardClone.querySelector('#user-card-age').textContent = `${ card.age } лет`;
 
+      deleteUserCardButton = cardClone.querySelector('#delete-user-card-btn');
+      deleteUserCardButton.addEventListener('click', () => {
+        handleDeleteUserCard(card.id);
+      })
+
       userCardList.appendChild(cardClone);
     });
   }
 }
 
-function showControlButtons() {
-  const deleteAllUserCardsButton = document.getElementById('delete-all-user-cards-btn');
-  const deleteUserCardButton = document.getElementById('delete-user-card-btn');
-  const getAllUserCardsButton = document.getElementById('get-all-user-cards-btn');
-
-  deleteAllUserCardsButton.addEventListener('click', () => {
-    handleDeleteAllUserCards();
-  })
-
-  deleteUserCardButton.addEventListener('click', () => {
-    handleDeleteUserCard();
-  })
-
-  getAllUserCardsButton.addEventListener('click', () => {
-    handleGetAllUserCards();
-  })
-}
-
 function handleDeleteAllUserCards() {
-  if (localStorage.getItem('users') === null) {
+  const currentUserCards = localStorage.getItem('users');
+
+  if (currentUserCards === null || currentUserCards === '[]') {
     alert("Вы уже удалили всех пользователей!");
     return;
   }
@@ -82,24 +80,12 @@ function handleDeleteAllUserCards() {
   clearAllUserCards();
 }
 
-function handleDeleteUserCard() {
+function handleDeleteUserCard(userId) {
   const currentUserCards = JSON.parse(localStorage.getItem('users'));
+  const newUserCards = currentUserCards.filter(userCard => userCard.id != userId);
 
-  if (currentUserCards === null || currentUserCards.length === 0) {
-    alert('Здесь нет ни одного пользователя!');
-    return;
-  }
-  const idUserCardForRemove = prompt("Введите ID пользователя для удаления");
-  allUserCardLength = JSON.parse(localStorage.getItem('allUserCardLength'));
-
-  if (idUserCardForRemove > 0 && idUserCardForRemove <= allUserCardLength) {
-    const newUserCards = currentUserCards.filter(userCard => userCard.id != idUserCardForRemove);
-
-    localStorage.setItem('users', JSON.stringify(newUserCards));
-    renderCards(newUserCards);
-  } else {
-    alert('Введите корректный ID пользователя!');
-  }
+  localStorage.setItem('users', JSON.stringify(newUserCards));
+  renderCards(newUserCards);
 }
 
 function handleGetAllUserCards() {
