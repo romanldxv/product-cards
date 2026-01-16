@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Roman",
+    "surname": "Shaymardanov",
+    "age": 19,
+    "email": "roman.shay@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 2,
+    "name": "Anna",
+    "surname": "Ivanova",
+    "age": 28,
+    "email": "anna.ivanova@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 3,
+    "name": "Dmitry",
+    "surname": "Petrov",
+    "age": 32,
+    "email": "dmitry.petrov@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 4,
+    "name": "Elena",
+    "surname": "Sidorova",
+    "age": 22,
+    "email": "elena.sidorova@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 5,
+    "name": "Alexey",
+    "surname": "Kozlov",
+    "age": 30,
+    "email": "alexey.kozlov@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 6,
+    "name": "Olga",
+    "surname": "Morozova",
+    "age": 27,
+    "email": "olga.morozova@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 7,
+    "name": "Sergey",
+    "surname": "Volkov",
+    "age": 35,
+    "email": "sergey.volkov@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 8,
+    "name": "Maria",
+    "surname": "Pavlova",
+    "age": 24,
+    "email": "maria.pavlova@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 9,
+    "name": "Andrey",
+    "surname": "Orlov",
+    "age": 29,
+    "email": "andrey.orlov@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 10,
+    "name": "Natalia",
+    "surname": "Fedorova",
+    "age": 31,
+    "email": "natalia.fedorova@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 11,
+    "name": "Igor",
+    "surname": "Belyaev",
+    "age": 26,
+    "email": "igor.belyaev@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 12,
+    "name": "Ekaterina",
+    "surname": "Nikolaeva",
+    "age": 33,
+    "email": "ekaterina.nikolaeva@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 13,
+    "name": "Pavel",
+    "surname": "Gusev",
+    "age": 23,
+    "email": "pavel.gusev@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 14,
+    "name": "Tatiana",
+    "surname": "Kuznetsova",
+    "age": 34,
+    "email": "tatiana.kuznetsova@example.com",
+    "imageName": "default-user-avatar"
+  },
+  {
+    "id": 15,
+    "name": "Mikhail",
+    "surname": "Lebedev",
+    "age": 40,
+    "email": "mikhail.lebedev@example.com",
+    "imageName": "default-user-avatar"
+  }
+]

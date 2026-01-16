@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Tahoma;
+  font-size: 18px;
+}
+
+.content-container {
+  width: 1300px;
+  margin: auto;
+  padding: 50px;
+}
+
+.control-btn-list {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-bottom: 80px;
+}
+
+.control-btn-list-item {
+  list-style: none;
+}
+
+.control-btn {
+  border: 0;
+  border-radius: 25px;
+  width: 230px;
+  height: 80px;
+  background-color: bisque;
+  cursor: pointer;
+}
+
+.user-card-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 1200px;
+  gap: 45px;
+}
+
+.user-card-list-item {
+  list-style: none;
+}
+
+.loading-text {
+  display: none;
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-text-showed {
+  display: block;
+}
+
+.loading-error-text {
+  display: none;
+  font-size: 24px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.loading-error-text-showed {
+  display: block;
+}
+
+.user-card {
+  padding: 20px;
+  width: 320px;
+  height: 370px;
+  background-color: rgba(95, 158, 160, 0.541);
+}
+
+.user-card-photo {
+  width: 170px;
+  margin-left: 55px;
+  margin-bottom: 30px;
+}
+
+.user-card-text {
+  text-align: center;
+}
+
+.user-card-btn {
+  border: 0;
+  border-radius: 5px;
+  width: 150px;
+  height: 40px;
+  background-color: rgb(181, 255, 167);
+  cursor: pointer;
+  margin-top: 40px;
+  margin-left: 60px;
+}
